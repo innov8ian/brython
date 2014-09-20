@@ -1,13 +1,55 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-<script src="src/brython.js"></script>
+<script src="http://brython.info/src/brython_dist.js"></script>
+<!-- script src="./brython_dist.js"></script -->
 </head>
-<body onload="brython()">
-
+<body onload="brython(1)">
+<!-- script type="text/python" src="react.py" -->
 <script type="text/python">
-from browser import document as doc
-doc <= "Hello world !"
+from browser import document,alert,html
+import time
+start=time.time()
+last=start
+doc=document
+def echo(ev):
+  alert(document["zone"].value)
+def saveTime(ev):
+  global last
+  now=time.time()
+  gap=now - last
+  last=now
+  doc["zone"].value= '{}'.format(gap)
+def flip(elt):
+  inv=doc[elt].style.visibility
+  print('v',elt,inv)
+  if inv != 'hidden':
+    doc[elt].style.visibility = 'hidden'
+  else:
+    doc[elt].style.visibility = ''
+  
+def ready(ev):
+  #flip('mybutton')
+  print('--{}--'.format(doc["name"].value))
+  if doc['name'].value.strip() == '':
+    doc['error'].value = 'name please'
+    return
+  for elt in ('readybutton','error','mybutton','zone'):
+    flip(elt)
+flip('mybutton')
+flip('zone')
+doc['mybutton'].bind('click',saveTime)
+doc['readybutton'].bind('click',ready)
+doc <= html.B("Hello world !")
+print("hi")
 </script>
+<p>Name    Gender  Birth Year</p>
+<p><input id="name"><input id="sex"><input id="year"></p>
+<p>Use just a short name or nicname to help label your data.<br>
+The name will not be part of the final information</p>
+<p><button id="readybutton">Ready</button><input id='error'></p>
+<p><input id="zone" >
+  <button id="mybutton">click !</button></p>
 
 </body>
 </html>
