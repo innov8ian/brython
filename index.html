@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-
+<script src="/brython.js"></script> 
 </head>
-<body> 
+<body onload="brython()"> 
 
 <script type="text/javascript">
 function doit()
@@ -11,8 +11,12 @@ function doit()
 alert("Hello World!")
 }
 </script>
-
+<script type="text/python">
+from browser import document,alert
+def doitpy():
+  alert('python')
+</script>
 <p>some text</p>
-<button onclick="doit()">test</button>
+<button onclick="doitpy()">test</button>
 </body>
 </html>
