@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<script src="/brython.js"></script> 
+<script src="./brython.js"></script> 
 </head>
 <body onload="brython()"> 
 
@@ -13,7 +13,7 @@ alert("Hello World!")
 </script>
 <script type="text/python">
 from browser import document,alert
-def doitpy():
+def doitpy(ev):
   alert('python')
 document['pybut'].bind('click',doitpy)
 </script>
