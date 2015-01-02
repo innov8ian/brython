@@ -15,9 +15,10 @@ alert("Hello World!")
 from browser import document,alert
 def doitpy():
   alert('python')
+document['pybut'].bind('click',doitpy)
 </script>
 <p>some text</p>
 <button onclick="doit()">test</button>
-<button onclick="doitpy()">pytest</button>
+<button id="pybut">pytest</button>
 </body>
 </html>
