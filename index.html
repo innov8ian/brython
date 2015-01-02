@@ -9,17 +9,24 @@
 <script type="text/javascript">
 function doit()
 {  
-alert("Hello World!")
+alert("Hello World!");
+document.getElementById("dosplay").value = "js"
 }
 </script>
 <script type="text/python">
 from browser import document,alert
 def doitpy(ev):
   alert('python')
+  document['display'].value = 'python'
 document['pybut'].bind('click',doitpy)
 </script>
 <p>some text</p>
-<button onclick="doit()">test</button>
-<button id="pybut">pytest</button>
+<p>
+  <button onclick="doit()">test</button>
+  <button id="pybut">pytest</button>
+</p>
+<p>
+  <input id="display" readonly="true"></inout>
+</p>
 </body>
 </html>
